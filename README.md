@@ -1,2 +1,2 @@
 # Portfolio
-a Portfolio with all my work
+a Portfolio with all my projects
