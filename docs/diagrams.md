@@ -1,4 +1,4 @@
-#use case diagram
+
 useCaseDiagram
     actor "Employer/Visitor" as User
     
@@ -22,7 +22,6 @@ useCaseDiagram
     
     UC5 .> UC_Extend : <<extend>>\n(on invalid input)
 
-#sequence digram
 
 sequenceDiagram
     autonumber
