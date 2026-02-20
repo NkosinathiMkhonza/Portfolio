@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nkosinathi Mkhonza | Documentation</title>
+    
+    <!-- META DESCRIPTION: Helps Google understand your site -->
+    <meta name="description" content="Portfolio of Nkosinathi Mkhonza, a Community-Taught Software Engineer.">
+
+    <!-- FONTS: We will use 'Inter' for text and 'JetBrains Mono' for code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- STYLESHEET: We will create this file tomorrow -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SIDEBAR: The fixed navigation on the left -->
+    <nav class="sidebar">
+        <div class="logo">
+            <span class="logo-symbol">&lt;/&gt;</span>
+            <span class="logo-text">docs.me</span>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-title">Getting Started</div>
+            <a href="#intro" class="nav-link">Introduction</a>
+            <a href="#philosophy" class="nav-link">Philosophy</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-title">Core Modules</div>
+            <a href="#skills" class="nav-link">Tech Stack</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#credentials" class="nav-link">Credentials</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-title">Interface</div>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        
+        <div class="sidebar-footer">
+            <a href="https://github.com/NkosinathiMkhonza" target="_blank" class="nav-link">
+                View Source on GitHub
+            </a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT: The scrollable area on the right -->
+    <main class="main-content">
+        
+        <!-- SECTION 1: INTRO -->
+        <section id="intro">
+            <div class="badges-container">
+                <!-- Badges will go here in future steps -->
+                <span class="badge">Status: Open to Work</span>
+            </div>
+            
+            <h1>Nkosinathi Mkhonza</h1>
+            <p class="subtitle">Software Engineer & Community-Taught Developer</p>
+            
+            <p>
+                Where documentation, Stack Overflow, and coffee are the syllabus. 
+                I build robust applications with Python, Django, and modern web technologies.
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>terminal</span>
+                    <span class="status-dot"></span>
+                </div>
+                <pre><code>$ python about_me.py
+print(f"Role: {user.role}")
+print(f"Focus: {user.focus}")</code></pre>
+            </div>
+
+            <a href="#contact" class="btn-primary">
+                Get in Touch
+            </a>
+        </section>
+
+        <!-- SECTION 2: PHILOSOPHY -->
+        <section id="philosophy">
+            <h2>Philosophy</h2>
+            <p>
+                I believe in "Code as Documentation". My journey hasn't been through traditional lectures, 
+                but through reading source code, solving real problems on Stack Overflow, and building things that break—then fixing them.
+            </p>
+            
+            <div class="code-block">
+                <div class="code-header">
+                    <span>work_ethic.py</span>
+                </div>
+                <pre><code>def daily_routine():
+    while True:
+        if daylight:
+            work_hard()  # Petrol Attendant
+        else:
+            code_hard()  # Software Engineer
+            learn_new_tech()
+            contribute_to_open_source()</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 3: TECH STACK -->
+        <section id="skills">
+            <h2>Tech Stack</h2>
+            <p>Technologies I use daily to build scalable, clean solutions.</p>
+            
+            <!-- Using a table for data structure instead of generic cards -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Tech</th>
+                        <th>Proficiency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Backend</strong></td>
+                        <td>Python, Django</td>
+                        <td>Advanced</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data</strong></td>
+                        <td>SQL, SQLite</td>
+                        <td>Intermediate</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Frontend</strong></td>
+                        <td>HTML5, CSS3, JS</td>
+                        <td>Intermediate</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tools</strong></td>
+                        <td>Git, REST APIs</td>
+                        <td>Advanced</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 4: PROJECTS -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <p>A list of pinned repositories. Each project solves a specific problem.</p>
+
+            <!-- Project 1 -->
+            <div class="project-item">
+                <h3>django-rest-api</h3>
+                <p>A robust RESTful API featuring authentication, CRUD operations, and PostgreSQL integration.</p>
+                <div class="badges-container">
+                    <span class="badge">Python</span>
+                    <span class="badge">Django</span>
+                    <span class="badge">PostgreSQL</span>
+                </div>
+                <div class="code-block">
+                    <pre><code># Endpoints Available
+GET    /api/v1/projects/
+POST   /api/v1/projects/
+GET    /api/v1/projects/{id}/</code></pre>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Project 2 -->
+            <div class="project-item">
+                <h3>task-manager-cli</h3>
+                <p>A command-line interface tool for managing tasks built with Python and SQLite.</p>
+                <div class="badges-container">
+                    <span class="badge">Python</span>
+                    <span class="badge">SQLite</span>
+                </div>
+                <div class="code-block">
+                    <pre><code>$ python manage.py add "Finish Portfolio"
+Task added successfully.
+ $ python manage.py list
+[1] Finish Portfolio (Pending)</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CREDENTIALS -->
+        <section id="credentials">
+            <h2>Credentials</h2>
+            
+            <div class="credential-card">
+                <span class="badge">Verified</span>
+                <h3>Software Engineering Bootcamp</h3>
+                <p><strong>Hyperion Dev</strong> (Partnered with Stellenbosch University)</p>
+                <p><em>Currently Enrolled</em></p>
+                
+                <div class="cert-placeholder">
+                    <p>Certificate unlocking upon completion...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: CONTACT -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Ready to contribute to your team.</p>
+            
+            <div class="code-block">
+                <div class="code-header">
+                    <span>contact.json</span>
+                </div>
+                <pre><code>{
+  "name": "Nkosinathi Mkhonza",
+  "email": "your.email@example.com",
+  "github": "NkosinathiMkhonza",
+  "availability": "Immediate"
+}</code></pre>
+            </div>
+
+            <!-- Form Structure (We will style this later) -->
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary">Send Message</button>
+                
+                <!-- Hidden success message -->
+                <div id="form-success" style="display: none;">
+                    Message sent successfully!
+                </div>
+            </form>
+        </section>
+
+        <footer>
+            <p>Designed & Built by Nkosinathi Mkhonza</p>
+        </footer>
+
+    </main>
+
+    <!-- SCRIPT: We will create this file in a few days -->
+    <script src="script.js"></script>
+</body>
+</html>
