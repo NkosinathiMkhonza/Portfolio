@@ -262,3 +262,141 @@ hr.divider {
     background: var(--border);
     border-radius: 4px;
 }
+/* ==========================================
+   DAY 3: LAYOUT & STRUCTURE
+   ========================================== */
+
+/* 1. THE SIDEBAR (Fixed Position) */
+.sidebar {
+    /* Positioning: Fixed means it stays on the screen while you scroll */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh; /* 100% of the Viewport Height */
+    width: 280px;
+    
+    /* Styling */
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border);
+    padding: 32px 24px;
+    
+    /* Flexbox: Stacks items vertically */
+    display: flex;
+    flex-direction: column;
+    z-index: 10; /* Ensures it sits on top of content if they overlap */
+}
+
+/* Sidebar Logo Styling */
+.logo {
+    font-family: var(--font-code);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--fg);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-symbol {
+    color: var(--accent);
+}
+
+/* Sidebar Navigation Sections */
+.nav-section {
+    margin-bottom: 24px;
+}
+
+.nav-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+.nav-link {
+    display: block;
+    padding: 8px 12px;
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    margin-bottom: 2px;
+}
+
+/* Hover Effect for Links */
+.nav-link:hover {
+    background-color: var(--accent-dim);
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* Active Link Class (We will use JS for this later, but let's style it now) */
+.nav-link.active {
+    background-color: var(--accent-dim);
+    color: var(--accent);
+    font-weight: 500;
+}
+
+/* Push Footer to Bottom of Sidebar */
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+
+/* 2. THE MAIN CONTENT AREA */
+.main-content {
+    /* Margin-left moves the content past the fixed sidebar */
+    margin-left: 280px; 
+    
+    /* Padding creates space around the text */
+    padding: 48px 64px;
+    
+    /* Max-width ensures lines of text don't get too long to read */
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Section Spacing */
+section {
+    margin-bottom: 64px;
+}
+
+/* Credential Card Styling */
+.credential-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    background-color: var(--bg-secondary);
+}
+
+/* Certificate Placeholder */
+.cert-placeholder {
+    background-color: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    padding: 32px;
+    text-align: center;
+    margin-top: 24px;
+}
+
+
+/* 3. RESPONSIVE DESIGN (Mobile) */
+/* If screen is smaller than 768px (Tablets/Phones) */
+@media (max-width: 768px) {
+    /* Hide the sidebar to save space */
+    .sidebar {
+        display: none;
+    }
+
+    /* Expand main content to full width */
+    .main-content {
+        margin-left: 0;
+        padding: 32px 24px;
+    }
+}
