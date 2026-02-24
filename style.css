@@ -400,3 +400,43 @@ section {
         padding: 32px 24px;
     }
 }
+/* ==========================================
+   DAY 5: INTERACTIVE ELEMENTS STYLE
+   ========================================== */
+
+/* The Run Button */
+.run-btn {
+    background-color: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-family: var(--font-main);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.run-btn:hover {
+    background-color: var(--accent);
+    color: var(--bg);
+}
+
+/* The Output Box */
+.run-output {
+    background-color: #000000; /* Deep black for terminal feel */
+    color: #3fb950; /* Green text for output */
+    border-top: 1px solid var(--border);
+    padding: 16px;
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    white-space: pre-wrap; /* Keeps the line breaks */
+    animation: fadeIn 0.3s ease;
+}
+
+/* Simple fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
