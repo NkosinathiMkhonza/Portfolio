@@ -116,3 +116,122 @@ function executeSnippet(block, title) {
     // Append it to the code block (after the <pre>)
     block.appendChild(outputDiv);
 }
+// ==========================================
+// DAY 6: FORM VALIDATION LOGIC
+// ==========================================
+
+// 1. SELECT FORM ELEMENTS
+const form = document.getElementById('contact-form');
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const messageInput = document.getElementById('message');
+const formSuccess = document.getElementById('form-success');
+
+// 2. HELPER FUNCTIONS
+
+// validateEmail: Uses Regex to check if email looks real
+const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+};
+
+// showError: Adds error class and displays message
+const showError = (input, message) => {
+    const formGroup = input.parentElement;
+    const errorDisplay = formGroup.querySelector('.error-text');
+
+    // We need to add the error text to HTML if it doesn't exist
+    // But for now, we assume the HTML structure is there or we handle it dynamically
+    if (!errorDisplay) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-text visible';
+        errorDiv.textContent = message;
+        formGroup.appendChild(errorDiv);
+    } else {
+        errorDisplay.textContent = message;
+        errorDisplay.classList.add('visible');
+    }
+    
+    input.classList.add('error');
+};
+
+// clearError: Removes error state
+const clearError = (input) => {
+    const formGroup = input.parentElement;
+    const errorDisplay = formGroup.querySelector('.error-text');
+    
+    if (errorDisplay) {
+        errorDisplay.classList.remove('visible');
+    }
+    input.classList.remove('error');
+};
+
+
+// 3. VALIDATION LOGIC
+
+const checkInputs = () => {
+    let isValid = true;
+
+    // Validate Name
+    if (nameInput.value.trim() === '') {
+        showError(nameInput, 'Name is required');
+        isValid = false;
+    } else {
+        clearError(nameInput);
+    }
+
+    // Validate Email
+    if (emailInput.value.trim() === '') {
+        showError(emailInput, 'Email is required');
+        isValid = false;
+    } else if (!validateEmail(emailInput.value.trim())) {
+        showError(emailInput, 'Please enter a valid email');
+        isValid = false;
+    } else {
+        clearError(emailInput);
+    }
+
+    // Validate Message
+    if (messageInput.value.trim() === '') {
+        showError(messageInput, 'Message is required');
+        isValid = false;
+    } else if (messageInput.value.trim().length < 10) {
+        showError(messageInput, 'Message must be at least 10 characters');
+        isValid = false;
+    } else {
+        clearError(messageInput);
+    }
+
+    return isValid;
+};
+
+
+// 4. EVENT LISTENERS
+
+// Submit Event
+form.addEventListener('submit', (e) => {
+    // 1. Prevent the form from submitting to a server (we don't have one)
+    e.preventDefault();
+
+    // 2. Check inputs
+    if (checkInputs()) {
+        // 3. If valid, show success message
+        formSuccess.style.display = 'block';
+        formSuccess.textContent = 'Message sent successfully! (Simulated)';
+        
+        // 4. Reset form
+        form.reset();
+
+        // 5. Hide success message after 5 seconds
+        setTimeout(() => {
+            formSuccess.style.display = 'none';
+        }, 5000);
+    } else {
+        formSuccess.style.display = 'none';
+    }
+});
+
+// Real-time Feedback (Blur = when user clicks out of the input)
+[nameInput, emailInput, messageInput].forEach(input => {
+    input.addEventListener('blur', checkInputs);
+});
