@@ -440,3 +440,37 @@ section {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* ==========================================
+   DAY 6: FORM VALIDATION STYLES
+   ========================================== */
+
+/* The Error Input State */
+.form-input.error {
+    border-color: var(--error);
+    background-color: rgba(255, 107, 107, 0.05); /* Light red bg */
+}
+
+/* The Error Message Text */
+.error-text {
+    color: var(--error);
+    font-size: 0.8rem;
+    margin-top: 6px;
+    display: none; /* Hidden by default */
+}
+
+/* Class to show the error */
+.error-text.visible {
+    display: block;
+}
+
+/* Success Message Box */
+#form-success {
+    margin-top: 20px;
+    padding: 16px;
+    background-color: rgba(63, 185, 80, 0.1); /* Light green bg */
+    border: 1px solid var(--success);
+    color: var(--success);
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+}
