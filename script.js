@@ -235,3 +235,39 @@ form.addEventListener('submit', (e) => {
 [nameInput, emailInput, messageInput].forEach(input => {
     input.addEventListener('blur', checkInputs);
 });
+// ==========================================
+// DAY 7: FINAL POLISH
+// ==========================================
+
+// 1. DYNAMIC YEAR IN FOOTER
+const yearSpan = document.getElementById('year');
+const currentYear = new Date().getFullYear();
+yearSpan.textContent = currentYear;
+
+// 2. BACK TO TOP BUTTON
+// Create the button element
+const backToTopBtn = document.createElement('button');
+backToTopBtn.className = 'back-to-top';
+backToTopBtn.innerHTML = `
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+`;
+document.body.appendChild(backToTopBtn);
+
+// Show/Hide Button Logic
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) { // If scrolled down more than 300px
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+});
+
+// Click Event
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});

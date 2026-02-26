@@ -474,3 +474,79 @@ section {
     text-align: center;
     font-weight: 500;
 }
+/* ==========================================
+   DAY 7: RESPONSIVE POLISH & MOBILE HEADER
+   ========================================== */
+
+/* 1. Mobile Header (Hidden on Desktop) */
+.mobile-header {
+    display: none; /* Hidden by default on large screens */
+    position: sticky;
+    top: 0;
+    background-color: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.mobile-logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* 2. Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Hidden initially */
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Prevents clicking when invisible */
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 3. Responsive Adjustments (Mobile) */
+@media (max-width: 768px) {
+    /* Show Mobile Header */
+    .mobile-header {
+        display: flex;
+    }
+
+    /* Adjust Main Content padding */
+    .main-content {
+        padding-top: 24px; /* Space after sticky header */
+    }
+
+    /* Typography Scaling for Mobile */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; margin-top: 48px; }
+    
+    /* Make sure code blocks don't break layout */
+    pre { 
+        font-size: 0.8rem; 
+        white-space: pre-wrap; /* Wraps code on small screens */
+    }
+    
+    /* Table Scroll Fix */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
