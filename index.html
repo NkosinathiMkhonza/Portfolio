@@ -4,104 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nkosinathi Mkhonza | Documentation</title>
-    
-    <!-- META DESCRIPTION: Helps Google understand your site -->
     <meta name="description" content="Portfolio of Nkosinathi Mkhonza, a Community-Taught Software Engineer.">
 
-    <!-- FONTS: We will use 'Inter' for text and 'JetBrains Mono' for code -->
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <!-- STYLESHEET: We will create this file tomorrow -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <!-- MOBILE HEADER: Only visible on small screens -->
-    <header class="mobile-header">
+    <header class="mobile-header d-lg-none">
         <div class="mobile-logo">Nkosinathi Mkhonza</div>
-        <a href="https://github.com/NkosinathiMkhonza" target="_blank" class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem;">
-            GitHub
-        </a>
+        <a href="https://github.com/NkosinathiMkhonza" target="_blank" class="btn-primary" style="padding:6px 12px;font-size:0.8rem;">GitHub</a>
     </header>
-    <!-- SIDEBAR: The fixed navigation on the left -->
-    <nav class="sidebar">
-        <div class="logo">
-            <span class="logo-symbol">&lt;/&gt;</span>
-            <span class="logo-text">docs.me</span>
-        </div>
 
-        <div class="nav-section">
-            <div class="nav-title">Getting Started</div>
-            <a href="#intro" class="nav-link">Introduction</a>
-            <a href="#philosophy" class="nav-link">Philosophy</a>
-        </div>
+    <!-- 3-6-3 BOOTSTRAP GRID -->
+    <div class="container-fluid p-0">
+        <div class="row g-0 layout-row">
 
-        <div class="nav-section">
-            <div class="nav-title">Core Modules</div>
-            <a href="#skills" class="nav-link">Tech Stack</a>
-            <a href="#projects" class="nav-link">Projects</a>
-            <a href="#credentials" class="nav-link">Credentials</a>
-        </div>
-
-        <div class="nav-section">
-            <div class="nav-title">Interface</div>
-            <a href="#contact" class="nav-link">Contact</a>
-        </div>
-        
-        <div class="sidebar-footer">
-            <a href="https://github.com/NkosinathiMkhonza" target="_blank" class="nav-link">
-                View Source on GitHub
-            </a>
-        </div>
-    </nav>
-
-    <!-- MAIN CONTENT: The scrollable area on the right -->
-    <main class="main-content">
-        
-        <!-- SECTION 1: INTRO -->
-        <section id="intro">
-            <div class="badges-container">
-                <!-- Badges will go here in future steps -->
-                <span class="badge">Status: Open to Work</span>
-            </div>
-            
-            <h1>Nkosinathi Mkhonza</h1>
-            <p class="subtitle">Software Engineer & Community-Taught Developer</p>
-            
-            <p>
-                Where documentation, Stack Overflow, and coffee are the syllabus. 
-                I build robust applications with Python, Django, and modern web technologies.
-            </p>
-
-            <div class="code-block">
-                <div class="code-header">
-                    <span>terminal</span>
-                    <span class="status-dot"></span>
+            <!-- COL-3: LEFT NAV SIDEBAR -->
+            <nav class="col-lg-2 sidebar d-none d-lg-flex">
+                <div class="logo">
+                    <span class="logo-symbol">&lt;/&gt;</span>
+                    <span class="logo-text">docs.me</span>
                 </div>
-                <pre><code>$ python about_me.py
+                <div class="nav-section">
+                    <div class="nav-title">Getting Started</div>
+                    <a href="#intro" class="nav-link">Introduction</a>
+                    <a href="#philosophy" class="nav-link">Philosophy</a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-title">Core Modules</div>
+                    <a href="#skills" class="nav-link">Tech Stack</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#credentials" class="nav-link">Credentials</a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-title">Interface</div>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <div class="sidebar-footer">
+                    <a href="https://github.com/NkosinathiMkhonza" target="_blank" class="nav-link">View Source on GitHub</a>
+                </div>
+            </nav>
+
+            <!-- COL-6: MAIN CONTENT -->
+            <main class="col-12 col-lg-8 main-content">
+
+                <section id="intro">
+                    <div class="badges-container">
+                        <span class="badge">Status: Open to Work</span>
+                    </div>
+                    <h1>Nkosinathi Mkhonza</h1>
+                    <p class="subtitle">Software Engineer & Community-Taught Developer</p>
+                    <p>Where documentation, Stack Overflow, and coffee are the syllabus. I build robust applications with Python, Django, and modern web technologies.</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>terminal</span>
+                            <span class="status-dot"></span>
+                        </div>
+                        <pre><code>$ python about_me.py
 print(f"Role: {user.role}")
 print(f"Focus: {user.focus}")</code></pre>
-            </div>
+                    </div>
+                    <a href="#contact" class="btn-primary">Get in Touch</a>
+                </section>
 
-            <a href="#contact" class="btn-primary">
-                Get in Touch
-            </a>
-        </section>
-
-        <!-- SECTION 2: PHILOSOPHY -->
-        <section id="philosophy">
-            <h2>Philosophy</h2>
-            <p>
-                I believe in "Code as Documentation". My journey hasn't been through traditional lectures, 
-                but through reading source code, solving real problems on Stack Overflow, and building things that break—then fixing them.
-            </p>
-            
-            <div class="code-block">
-                <div class="code-header">
-                    <span>work_ethic.py</span>
-                </div>
-                <pre><code>def daily_routine():
+                <section id="philosophy">
+                    <h2>Philosophy</h2>
+                    <p>I believe in "Code as Documentation". My journey hasn't been through traditional lectures, but through reading source code, solving real problems on Stack Overflow, and building things that break—then fixing them.</p>
+                    <div class="code-block">
+                        <div class="code-header"><span>work_ethic.py</span></div>
+                        <pre><code>def daily_routine():
     while True:
         if daylight:
             work_hard()  # Petrol Attendant
@@ -109,150 +89,210 @@ print(f"Focus: {user.focus}")</code></pre>
             code_hard()  # Software Engineer
             learn_new_tech()
             contribute_to_open_source()</code></pre>
-            </div>
-        </section>
+                    </div>
+                </section>
 
-        <!-- SECTION 3: TECH STACK -->
-        <section id="skills">
-            <h2>Tech Stack</h2>
-            <p>Technologies I use daily to build scalable, clean solutions.</p>
-            
-            <!-- Using a table for data structure instead of generic cards -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Tech</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Backend</strong></td>
-                        <td>Python, Django</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Data</strong></td>
-                        <td>SQL, SQLite</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Frontend</strong></td>
-                        <td>HTML5, CSS3, JS</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tools</strong></td>
-                        <td>Git, REST APIs</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+                <section id="skills">
+                    <h2>Tech Stack</h2>
+                    <p>Technologies I use daily to build scalable, clean solutions.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Category</th><th>Tech</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Backend</strong></td><td>Python, Django</td></tr>
+                            <tr><td><strong>Data</strong></td><td>SQL, SQLite</td></tr>
+                            <tr><td><strong>Frontend</strong></td><td>HTML5, CSS3, JS</td></tr>
+                            <tr><td><strong>Tools</strong></td><td>Git, REST APIs</td></tr>
+                        </tbody>
+                    </table>
+                </section>
 
-        <!-- SECTION 4: PROJECTS -->
-        <section id="projects">
-            <h2>Projects</h2>
-            <p>A list of pinned repositories. Each project solves a specific problem.</p>
-
-            <!-- Project 1 -->
-            <div class="project-item">
-                <h3>django-rest-api</h3>
-                <p>A robust RESTful API featuring authentication, CRUD operations, and PostgreSQL integration.</p>
-                <div class="badges-container">
-                    <span class="badge">Python</span>
-                    <span class="badge">Django</span>
-                    <span class="badge">PostgreSQL</span>
-                </div>
-                <div class="code-block">
-                    <pre><code># Endpoints Available
+                <section id="projects">
+                    <h2>Projects</h2>
+                    <p>A list of pinned repositories. Each project solves a specific problem.</p>
+                    <div class="project-item">
+                        <h3>django-rest-api</h3>
+                        <p>A robust RESTful API featuring authentication, CRUD operations, and PostgreSQL integration.</p>
+                        <div class="badges-container">
+                            <span class="badge">Python</span>
+                            <span class="badge">Django</span>
+                            <span class="badge">PostgreSQL</span>
+                        </div>
+                        <div class="code-block">
+                            <pre><code># Endpoints Available
 GET    /api/v1/projects/
 POST   /api/v1/projects/
 GET    /api/v1/projects/{id}/</code></pre>
-                </div>
-            </div>
-
-            <hr class="divider">
-
-            <!-- Project 2 -->
-            <div class="project-item">
-                <h3>task-manager-cli</h3>
-                <p>A command-line interface tool for managing tasks built with Python and SQLite.</p>
-                <div class="badges-container">
-                    <span class="badge">Python</span>
-                    <span class="badge">SQLite</span>
-                </div>
-                <div class="code-block">
-                    <pre><code>$ python manage.py add "Finish Portfolio"
+                        </div>
+                    </div>
+                    <hr class="divider">
+                    <div class="project-item">
+                        <h3>task-manager-cli</h3>
+                        <p>A command-line interface tool for managing tasks built with Python and SQLite.</p>
+                        <div class="badges-container">
+                            <span class="badge">Python</span>
+                            <span class="badge">SQLite</span>
+                        </div>
+                        <div class="code-block">
+                            <pre><code>$ python manage.py add "Finish Portfolio"
 Task added successfully.
- $ python manage.py list
+$ python manage.py list
 [1] Finish Portfolio (Pending)</code></pre>
-                </div>
-            </div>
-        </section>
+                        </div>
+                    </div>
+                </section>
 
-        <!-- SECTION 5: CREDENTIALS -->
-        <section id="credentials">
-            <h2>Credentials</h2>
-            
-            <div class="credential-card">
-                <span class="badge">Verified</span>
-                <h3>Software Engineering Bootcamp</h3>
-                <p><strong>Hyperion Dev</strong> (Partnered with Stellenbosch University)</p>
-                <p><em>Currently Enrolled</em></p>
-                
-                <div class="cert-placeholder">
-                    <p>Certificate unlocking upon completion...</p>
-                </div>
-            </div>
-        </section>
+                <section id="credentials">
+                    <h2>Credentials</h2>
+                    <div class="credential-card">
+                        <span class="badge">Verified</span>
+                        <h3>Software Engineering Bootcamp</h3>
+                        <p><strong>Hyperion Dev</strong> (Partnered with Stellenbosch University)</p>
+                        <p><em>Currently Enrolled</em></p>
+                        <div class="cert-placeholder">
+                            <p>Certificate unlocking upon completion...</p>
+                        </div>
+                    </div>
+                </section>
 
-        <!-- SECTION 6: CONTACT -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Ready to contribute to your team.</p>
-            
-            <div class="code-block">
-                <div class="code-header">
-                    <span>contact.json</span>
-                </div>
-                <pre><code>{
+                <section id="contact">
+                    <h2>Contact</h2>
+                    <p>Ready to contribute to your team.</p>
+                    <div class="code-block">
+                        <div class="code-header"><span>contact.json</span></div>
+                        <pre><code>{
   "name": "Nkosinathi Mkhonza",
-  "email": "your.email@example.com",
+  "email": "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d4452484f1358505c54517d58455c504d5158135e5250">[email&#160;protected]</a>",
   "github": "NkosinathiMkhonza",
   "availability": "Immediate"
 }</code></pre>
-            </div>
+                    </div>
 
-            <!-- Form Structure (We will style this later) -->
-            <form id="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                
-                <button type="submit" class="btn-primary">Send Message</button>
-                
-                <!-- Hidden success message -->
-                <div id="form-success" style="display: none;">
-                    Message sent successfully!
-                </div>
-            </form>
-        </section>
+                    <div class="form-shell">
+                        <div class="form-shell-header">
+                            <span class="shell-file-tab">contact-form.sh</span>
+                            <span class="shell-status" id="shell-status">&#9679; ready</span>
+                        </div>
+                        <form id="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="name"><span class="prompt-sym">$</span> name</label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" autocomplete="off" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><span class="prompt-sym">$</span> email</label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" autocomplete="off" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject"><span class="prompt-sym">$</span> subject</label>
+                                <input type="text" id="subject" name="subject" class="form-input" placeholder="What's this about?" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="message"><span class="prompt-sym">$</span> message</label>
+                                <textarea id="message" name="message" class="form-input" rows="5" placeholder="Type your message..." maxlength="500" required></textarea>
+                                <span class="char-counter" id="charCount">0 / 500</span>
+                            </div>
+                            <button type="button" class="submit-btn" id="submitBtn">
+                                <span class="submit-path">~/portfolio</span> run send_message.py <span class="submit-arrow">&#8594;</span>
+                            </button>
+                        </form>
 
-        <footer>
-            <p>Designed & Built by Nkosinathi Mkhonza &copy; <span id="year"></span></p>
-        </footer>
+                        <!-- SUCCESS TERMINAL -->
+                        <div class="terminal-success" id="terminal-success">
+                            <div class="ts-line ts-d0"><span class="ts-prompt">$</span> python send_message.py --to nkosinathi</div>
+                            <div class="ts-line ts-d1"><span class="ts-dim">[</span><span class="ts-ok"> INFO </span><span class="ts-dim">]</span> Initializing secure connection...</div>
+                            <div class="ts-line ts-d2"><span class="ts-dim">[</span><span class="ts-ok"> INFO </span><span class="ts-dim">]</span> Encrypting payload...</div>
+                            <div class="ts-line ts-d3"><span class="ts-dim">[</span><span class="ts-ok"> INFO </span><span class="ts-dim">]</span> Authenticating sender...</div>
+                            <div class="ts-line ts-d4"><span class="ts-dim">[</span><span class="ts-ok"> INFO </span><span class="ts-dim">]</span> Pushing to <span class="ts-blue">nkosinathi.notifications</span>...</div>
+                            <div class="ts-line ts-d5 ts-success-line">&#10003; Message successfully pushed to your new dev's inbox.</div>
+                            <div class="ts-line ts-d6 ts-dim-line">&nbsp;&nbsp;exit 0 &nbsp;|&nbsp; status: 200 OK &nbsp;|&nbsp; response: ~24h</div>
+                            <div class="ts-line ts-d7">
+                                <button type="button" class="ts-reset-btn" id="tsResetBtn">$ send_another_message.py &#8594;</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-    </main>
+                <footer>
+                    <p>Designed & Built by Nkosinathi Mkhonza &copy; <span id="year"></span></p>
+                </footer>
 
-    <!-- SCRIPT: We will create this file in a few days -->
+            </main>
+
+            <!-- COL-3: RIGHT LIVE PANEL -->
+            <aside class="col-lg-2 right-panel d-none d-lg-flex">
+
+                <div class="rp-section">
+                    <div class="rp-title">// live.activity</div>
+
+                    <!-- Latest commit — filled by GitHub API -->
+                    <div class="rp-item" id="rp-commit-item">
+                        <span class="rp-dot rp-dot-green"></span>
+                        <div>
+                            <div class="rp-label">Latest Commit</div>
+                            <div class="rp-value" id="rp-commit-msg">loading...</div>
+                            <div class="rp-meta" id="rp-commit-meta">fetching from GitHub...</div>
+                        </div>
+                    </div>
+
+                    <!-- Recent commits — filled by GitHub API -->
+                    <div id="rp-commits-list"></div>
+
+                    <div class="rp-item">
+                        <span class="rp-dot rp-dot-blue"></span>
+                        <div>
+                            <div class="rp-label">Current Focus</div>
+                            <div class="rp-value">Django REST APIs</div>
+                            <div class="rp-meta">backend &bull; active</div>
+                        </div>
+                    </div>
+                    <div class="rp-item">
+                        <span class="rp-dot rp-dot-yellow"></span>
+                        <div>
+                            <div class="rp-label">Learning</div>
+                            <div class="rp-value">Playwright &bull; QA</div>
+                            <div class="rp-meta">in progress</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rp-section">
+                    <div class="rp-title">// stack.json</div>
+                    <div class="rp-tag-cloud">
+                        <span class="rp-tag">Python</span>
+                        <span class="rp-tag">Django</span>
+                        <span class="rp-tag">REST APIs</span>
+                        <span class="rp-tag">PostgreSQL</span>
+                        <span class="rp-tag">SQLite</span>
+                        <span class="rp-tag">HTML5</span>
+                        <span class="rp-tag">CSS3</span>
+                        <span class="rp-tag">JavaScript</span>
+                        <span class="rp-tag">Git</span>
+                    </div>
+                </div>
+
+                <div class="rp-section">
+                    <div class="rp-title">// availability</div>
+                    <div class="rp-avail">
+                        <span class="rp-avail-dot"></span>
+                        <span>Open to Work</span>
+                    </div>
+                    <div class="rp-avail-detail">Full Stack &bull; QA Engineer</div>
+                    <div class="rp-avail-detail">Cape Town, ZA &bull; Remote OK</div>
+                </div>
+
+                <div class="rp-section">
+                    <div class="rp-title">// links</div>
+                    <a href="https://github.com/NkosinathiMkhonza" target="_blank" class="rp-link">&#128279; github.com/NkosinathiMkhonza</a>
+                    <a href="#contact" class="rp-link">&#9993; Send a message</a>
+                </div>
+
+            </aside>
+
+        </div><!-- end .row -->
+    </div><!-- end .container-fluid -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
