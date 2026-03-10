@@ -1,273 +1,208 @@
-// ==========================================
-// DAY 4: SETUP & NAVIGATION LOGIC
-// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
 
-// 1. SELECTING ELEMENTS (The Variables)
-// We are grabbing the HTML elements we need to interact with.
+// ==========================================
+// SCROLL SPY — highlights active nav link
+// ==========================================
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-link');
 
-// Debugging: Check if we successfully grabbed the elements
-// Open your browser Console (F12 -> Console) to see this print out
 console.log(`Script Loaded. Found ${sections.length} sections and ${navLinks.length} nav links.`);
 
-
-// 2. THE SCROLL SPY LOGIC
-// This function checks which section is currently on screen and highlights the nav link.
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        // If the section is visible on screen
         if (entry.isIntersecting) {
-            // Get the ID of the current section (e.g., "intro", "projects")
             const currentId = entry.target.getAttribute('id');
-            
-            // Remove 'active' class from all links first
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Find the specific link that points to this section and add 'active' class
-            // We use the CSS attribute selector: a[href="#intro"]
+            navLinks.forEach(link => link.classList.remove('active'));
             const activeLink = document.querySelector(`.nav-link[href="#${currentId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
+            if (activeLink) activeLink.classList.add('active');
         }
     });
-}, {
-    // Options: Trigger when 30% of the section is visible
-    threshold: 0.3 
-});
+}, { threshold: 0.3 });
 
-// Loop through all sections and attach the observer to them
-sections.forEach(section => {
-    observer.observe(section);
-});
-// ==========================================
-// DAY 5: INTERACTIVE CODE SNIPPETS
-// ==========================================
+sections.forEach(section => observer.observe(section));
 
-// 1. THE DATA (The Model)
-// This defines what happens when specific code blocks are "run".
+
+// ==========================================
+// INTERACTIVE CODE SNIPPETS
+// ==========================================
 const snippetOutputs = {
     "terminal": {
-        output: `
-> Role: Software Engineer
-> Focus: Django & REST APIs
-> Process: Code -> Break -> Fix -> Learn`,
-        language: "bash"
+        output: `> Role: Software Engineer\n> Focus: Django & REST APIs\n> Process: Code -> Break -> Fix -> Learn`
     },
     "work_ethic.py": {
-        output: `
-[INFO] Starting daily routine...
-[SUCCESS] Hard work completed.
-[INFO] Switching to Engineering Mode...`,
-        language: "python"
+        output: `[INFO] Starting daily routine...\n[SUCCESS] Hard work completed.\n[INFO] Switching to Engineering Mode...`
     }
 };
 
-// 2. THE LOGIC (The Controller)
-// We find the code blocks and add the buttons dynamically
 const codeBlocks = document.querySelectorAll('.code-block');
 
 codeBlocks.forEach(block => {
-    // Find the header to see what "file" it is
     const header = block.querySelector('.code-header span');
     if (!header) return;
-
-    const title = header.textContent.trim(); // e.g., "terminal" or "work_ethic.py"
-
-    // Check if we have defined an output for this block
+    const title = header.textContent.trim();
     if (snippetOutputs[title]) {
-        // Create the "Run" button
         const runBtn = document.createElement('button');
         runBtn.className = 'run-btn';
         runBtn.textContent = 'Run';
-        
-        // Add the button to the header
-        const headerContainer = block.querySelector('.code-header');
-        headerContainer.appendChild(runBtn);
-
-        // Add the Click Event Listener
+        block.querySelector('.code-header').appendChild(runBtn);
         runBtn.addEventListener('click', () => {
-            executeSnippet(block, title);
+            const existing = block.querySelector('.run-output');
+            if (existing) { existing.remove(); return; }
+            const outputDiv = document.createElement('div');
+            outputDiv.className = 'run-output';
+            outputDiv.textContent = snippetOutputs[title].output;
+            block.appendChild(outputDiv);
         });
     }
 });
 
-// 3. THE EXECUTION FUNCTION
-function executeSnippet(block, title) {
-    const data = snippetOutputs[title];
-    
-    // Check if output already exists, if so, remove it (toggle)
-    const existingOutput = block.querySelector('.run-output');
-    if (existingOutput) {
-        existingOutput.remove();
-        return;
-    }
 
-    // Create the output container
-    const outputDiv = document.createElement('div');
-    outputDiv.className = 'run-output';
-    
-    // Add the text
-    outputDiv.textContent = data.output;
-
-    // Append it to the code block (after the <pre>)
-    block.appendChild(outputDiv);
-}
 // ==========================================
-// DAY 6: FORM VALIDATION LOGIC
+// FORM — validation + terminal success swap
 // ==========================================
-
-// 1. SELECT FORM ELEMENTS
-const form = document.getElementById('contact-form');
-const nameInput = document.getElementById('name');
-const emailInput = document.getElementById('email');
+const form         = document.getElementById('contact-form');
+const nameInput    = document.getElementById('name');
+const emailInput   = document.getElementById('email');
 const messageInput = document.getElementById('message');
-const formSuccess = document.getElementById('form-success');
+const charCount    = document.getElementById('charCount');
+const termSuccess  = document.getElementById('terminal-success');
+const shellStatus  = document.getElementById('shell-status');
+const tsResetBtn   = document.getElementById('tsResetBtn');
+const submitBtn    = document.getElementById('submitBtn');
 
-// 2. HELPER FUNCTIONS
+// Char counter
+if (messageInput && charCount) {
+    messageInput.addEventListener('input', () => {
+        const len = messageInput.value.length;
+        charCount.textContent = len + ' / 500';
+        charCount.classList.toggle('warn', len > 400);
+    });
+}
 
-// validateEmail: Uses Regex to check if email looks real
-const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-};
+// Helpers
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-// showError: Adds error class and displays message
 const showError = (input, message) => {
-    const formGroup = input.parentElement;
-    const errorDisplay = formGroup.querySelector('.error-text');
-
-    // We need to add the error text to HTML if it doesn't exist
-    // But for now, we assume the HTML structure is there or we handle it dynamically
-    if (!errorDisplay) {
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-text visible';
-        errorDiv.textContent = message;
-        formGroup.appendChild(errorDiv);
-    } else {
-        errorDisplay.textContent = message;
-        errorDisplay.classList.add('visible');
+    const group = input.parentElement;
+    let err = group.querySelector('.error-text');
+    if (!err) {
+        err = document.createElement('div');
+        err.className = 'error-text';
+        group.appendChild(err);
     }
-    
+    err.textContent = message;
+    err.classList.add('visible');
     input.classList.add('error');
 };
 
-// clearError: Removes error state
 const clearError = (input) => {
-    const formGroup = input.parentElement;
-    const errorDisplay = formGroup.querySelector('.error-text');
-    
-    if (errorDisplay) {
-        errorDisplay.classList.remove('visible');
-    }
+    const err = input.parentElement.querySelector('.error-text');
+    if (err) err.classList.remove('visible');
     input.classList.remove('error');
 };
 
-
-// 3. VALIDATION LOGIC
-
 const checkInputs = () => {
-    let isValid = true;
+    let valid = true;
+    if (!nameInput.value.trim()) {
+        showError(nameInput, 'Name is required'); valid = false;
+    } else clearError(nameInput);
 
-    // Validate Name
-    if (nameInput.value.trim() === '') {
-        showError(nameInput, 'Name is required');
-        isValid = false;
-    } else {
-        clearError(nameInput);
-    }
-
-    // Validate Email
-    if (emailInput.value.trim() === '') {
-        showError(emailInput, 'Email is required');
-        isValid = false;
+    if (!emailInput.value.trim()) {
+        showError(emailInput, 'Email is required'); valid = false;
     } else if (!validateEmail(emailInput.value.trim())) {
-        showError(emailInput, 'Please enter a valid email');
-        isValid = false;
-    } else {
-        clearError(emailInput);
-    }
+        showError(emailInput, 'Please enter a valid email'); valid = false;
+    } else clearError(emailInput);
 
-    // Validate Message
-    if (messageInput.value.trim() === '') {
-        showError(messageInput, 'Message is required');
-        isValid = false;
+    if (!messageInput.value.trim()) {
+        showError(messageInput, 'Message is required'); valid = false;
     } else if (messageInput.value.trim().length < 10) {
-        showError(messageInput, 'Message must be at least 10 characters');
-        isValid = false;
-    } else {
-        clearError(messageInput);
-    }
+        showError(messageInput, 'Message must be at least 10 characters'); valid = false;
+    } else clearError(messageInput);
 
-    return isValid;
+    return valid;
 };
 
-
-// 4. EVENT LISTENERS
-
-// Submit Event
-form.addEventListener('submit', (e) => {
-    // 1. Prevent the form from submitting to a server (we don't have one)
+// Submit button click — send to Formspree then show terminal
+submitBtn.addEventListener('click', async (e) => {
     e.preventDefault();
+    if (!checkInputs()) return;
 
-    // 2. Check inputs
-    if (checkInputs()) {
-        // 3. If valid, show success message
-        formSuccess.style.display = 'block';
-        formSuccess.textContent = 'Message sent successfully! (Simulated)';
-        
-        // 4. Reset form
-        form.reset();
+    // Show sending state
+    submitBtn.innerHTML = '<span class="submit-path">~/portfolio</span> sending... <span class="submit-arrow">&#8987;</span>';
+    submitBtn.disabled = true;
 
-        // 5. Hide success message after 5 seconds
-        setTimeout(() => {
-            formSuccess.style.display = 'none';
-        }, 5000);
-    } else {
-        formSuccess.style.display = 'none';
+    try {
+        const response = await fetch('https://formspree.io/f/xpqyqvzy', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+        });
+
+        if (response.ok) {
+            // Fade out form, show terminal animation
+            form.style.transition = 'opacity 0.35s ease';
+            form.style.opacity = '0';
+            setTimeout(() => {
+                form.style.display = 'none';
+                if (shellStatus) shellStatus.textContent = '&#9679; sent';
+                termSuccess.style.display = 'block';
+            }, 360);
+        } else {
+            submitBtn.innerHTML = '<span class="submit-path">⚠</span> failed to send — try again';
+            submitBtn.disabled = false;
+        }
+    } catch (err) {
+        submitBtn.innerHTML = '<span class="submit-path">⚠</span> network error — try again';
+        submitBtn.disabled = false;
     }
 });
 
-// Real-time Feedback (Blur = when user clicks out of the input)
+// Reset — go back to blank form
+if (tsResetBtn) {
+    tsResetBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        termSuccess.style.display = 'none';
+        form.reset();
+        if (charCount) charCount.textContent = '0 / 500';
+        if (shellStatus) shellStatus.textContent = '● ready';
+        submitBtn.innerHTML = '<span class="submit-path">~/portfolio</span> run send_message.py <span class="submit-arrow">&#8594;</span>';
+        submitBtn.disabled = false;
+        form.style.opacity = '0';
+        form.style.display = '';
+        setTimeout(() => {
+            form.style.transition = 'opacity 0.35s ease';
+            form.style.opacity = '1';
+        }, 10);
+    });
+}
+
+// Real-time blur validation
 [nameInput, emailInput, messageInput].forEach(input => {
-    input.addEventListener('blur', checkInputs);
+    if (input) input.addEventListener('blur', checkInputs);
 });
-// ==========================================
-// DAY 7: FINAL POLISH
-// ==========================================
 
-// 1. DYNAMIC YEAR IN FOOTER
+
+// ==========================================
+// FOOTER YEAR
+// ==========================================
 const yearSpan = document.getElementById('year');
-const currentYear = new Date().getFullYear();
-yearSpan.textContent = currentYear;
+if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-// 2. BACK TO TOP BUTTON
-// Create the button element
+
+// ==========================================
+// BACK TO TOP BUTTON
+// ==========================================
 const backToTopBtn = document.createElement('button');
 backToTopBtn.className = 'back-to-top';
-backToTopBtn.innerHTML = `
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-`;
+backToTopBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>`;
 document.body.appendChild(backToTopBtn);
 
-// Show/Hide Button Logic
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) { // If scrolled down more than 300px
-        backToTopBtn.classList.add('visible');
-    } else {
-        backToTopBtn.classList.remove('visible');
-    }
+    backToTopBtn.classList.toggle('visible', window.scrollY > 300);
 });
 
-// Click Event
 backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+}); // end DOMContentLoaded
