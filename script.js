@@ -205,7 +205,6 @@ backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-<<<<<<< HEAD
 // ==========================================
 // GITHUB LIVE COMMITS — right panel
 // ==========================================
@@ -263,6 +262,4 @@ function escapeHtml(str) {
 
 loadGithubCommits();
 
-=======
->>>>>>> 642b8aab14088b3d27bb901e136866944eb4834b
 }); // end DOMContentLoaded
