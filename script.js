@@ -214,7 +214,7 @@ async function loadGithubCommits() {
     const commitList = document.getElementById('rp-commits-list');
 
     try {
-        const res = await fetch('https://api.github.com/users/NkosinathiMkhonza/events?per_page=20', {
+        const res = await fetch('https://api.github.com/users/NkosinathiMkhonza/events/public?per_page=20', {
             headers: { 'Accept': 'application/vnd.github.v3+json' }
         });
 
