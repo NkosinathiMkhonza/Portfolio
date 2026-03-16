@@ -214,36 +214,51 @@ async function loadGithubCommits() {
     const commitList = document.getElementById('rp-commits-list');
 
     try {
-        const res = await fetch('https://api.github.com/repos/NkosinathiMkhonza/Portfolio/commits?per_page=4', {
+        const res = await fetch('https://api.github.com/users/NkosinathiMkhonza/events?per_page=20', {
             headers: { 'Accept': 'application/vnd.github.v3+json' }
         });
 
         if (!res.ok) throw new Error('GitHub API error');
-        const commits = await res.json();
-        if (!commits.length) return;
 
-        // Latest commit — fills the green dot item
-        const latest    = commits[0];
-        const latestMsg = latest.commit.message.split('\n')[0];
-        const latestDate= timeAgo(new Date(latest.commit.author.date));
+        const events = await res.json();
+
+        // Filter only push events (actual commits)
+        const pushEvents = events.filter(e => e.type === 'PushEvent');
+
+        if (!pushEvents.length) {
+            commitMsg.textContent  = 'no recent commits';
+            commitMeta.textContent = 'github.com/NkosinathiMkhonza';
+            return;
+        }
+
+        // Latest commit across all repos
+        const latest      = pushEvents[0];
+        const latestCommit= latest.payload.commits[latest.payload.commits.length - 1];
+        const latestMsg   = latestCommit.message.split('\n')[0];
+        const latestRepo  = latest.repo.name.replace('NkosinathiMkhonza/', '');
+        const latestDate  = timeAgo(new Date(latest.created_at));
+
         commitMsg.textContent = latestMsg;
-        commitMeta.innerHTML  = `main &bull; ${latestDate}`;
+        commitMeta.innerHTML  = `${latestRepo} &bull; ${latestDate}`;
 
-        // Remaining 3 commits below
-        commitList.innerHTML = commits.slice(1).map(c => {
-            const msg  = c.commit.message.split('\n')[0];
-            const when = timeAgo(new Date(c.commit.author.date));
-            return `<div class="rp-item rp-commit-extra">
+        // Next 3 push events
+        commitList.innerHTML = pushEvents.slice(1, 4).map(e => {
+            const commit = e.payload.commits[e.payload.commits.length - 1];
+            const msg    = commit.message.split('\n')[0];
+            const repo   = e.repo.name.replace('NkosinathiMkhonza/', '');
+            const when   = timeAgo(new Date(e.created_at));
+            return `
+            <div class="rp-item rp-commit-extra">
                 <span class="rp-dot rp-dot-dim"></span>
                 <div>
                     <div class="rp-value rp-commit-msg-small">${escapeHtml(msg)}</div>
-                    <div class="rp-meta">${when}</div>
+                    <div class="rp-meta">${repo} &bull; ${when}</div>
                 </div>
             </div>`;
         }).join('');
 
     } catch (err) {
-        if (commitMsg) commitMsg.textContent = 'could not load commits';
+        if (commitMsg) commitMsg.textContent  = 'could not load activity';
         if (commitMeta) commitMeta.textContent = 'check github.com';
     }
 }
