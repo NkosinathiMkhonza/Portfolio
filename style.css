@@ -641,3 +641,53 @@ footer p { font-size: 0.85rem; color: var(--muted); }
     text-overflow: ellipsis;
     max-width: 160px;
 }
+
+/* ── Profile placeholder ── */
+.profile-placeholder {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+}
+
+.avatar-ring {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    padding: 2px;
+    flex-shrink: 0;
+    transition: border-color 0.2s;
+}
+
+.avatar-ring:hover { border-color: var(--accent); }
+
+.avatar-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+}
+
+.profile-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--fg);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-handle {
+    font-family: var(--font-code);
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-top: 2px;
+}
