@@ -652,8 +652,8 @@ footer p { font-size: 0.85rem; color: var(--muted); }
 }
 
 .avatar-img {
-    width: 100%;
-    height: 100%;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     border: 2px solid var(--border);
     transition: border-color 0.2s;

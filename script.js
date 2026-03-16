@@ -215,10 +215,16 @@ async function loadGithubCommits() {
 
     try {
         const res = await fetch('https://api.github.com/users/NkosinathiMkhonza/events/public?per_page=20', {
-            headers: { 'Accept': 'application/vnd.github.v3+json' }
+        headers: { 
+        'Accept': 'application/vnd.github.v3+json',
+        'X-Requested-With': 'XMLHttpRequest'
+             }
         });
 
-        if (!res.ok) throw new Error('GitHub API error');
+        if (!res.ok) {
+            console.log('GitHub API status:', res.status, res.statusText);
+            throw new Error('GitHub API error');
+        }
 
         const events = await res.json();
 
