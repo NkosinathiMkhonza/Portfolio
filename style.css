@@ -619,7 +619,6 @@ footer p { font-size: 0.85rem; color: var(--muted); }
     pre { font-size: 0.8rem; white-space: pre-wrap; }
     table { display: block; overflow-x: auto; white-space: nowrap; }
 }
-<<<<<<< HEAD
 
 /* ── GitHub live commits extras ── */
 .rp-dot-dim {
@@ -642,5 +641,3 @@ footer p { font-size: 0.85rem; color: var(--muted); }
     text-overflow: ellipsis;
     max-width: 160px;
 }
-=======
->>>>>>> 642b8aab14088b3d27bb901e136866944eb4834b
