@@ -239,7 +239,7 @@ async function loadGithubCommits() {
             return;
         }
 
-        // Sort by date newest first
+        // Sort by date, newest first
         allCommits.sort((a, b) => b.date - a.date);
 
         // Latest commit
