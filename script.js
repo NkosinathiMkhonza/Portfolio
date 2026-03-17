@@ -213,65 +213,56 @@ async function loadGithubCommits() {
     const commitMeta = document.getElementById('rp-commit-meta');
     const commitList = document.getElementById('rp-commits-list');
 
-    try {
-        const res = await fetch('https://api.github.com/users/NkosinathiMkhonza/events/public?per_page=20', {
-        headers: { 
-        'Accept': 'application/vnd.github.v3+json',
-        'X-Requested-With': 'XMLHttpRequest'
-             }
-        });
+    const repos = ['Portfolio', 'task-manager-cli'];
+    const allCommits = [];
 
-        if (!res.ok) {
-            console.log('GitHub API status:', res.status, res.statusText);
-            throw new Error('GitHub API error');
+    try {
+        for (const repo of repos) {
+            const res = await fetch(
+                `https://api.github.com/repos/NkosinathiMkhonza/${repo}/commits?per_page=3`,
+                { headers: { 'Accept': 'application/vnd.github.v3+json' } }
+            );
+            if (!res.ok) continue;
+            const commits = await res.json();
+            commits.forEach(c => {
+                allCommits.push({
+                    msg:  c.commit.message.split('\n')[0],
+                    repo: repo,
+                    date: new Date(c.commit.author.date)
+                });
+            });
         }
 
-        const events = await res.json();
-
-        // Filter only push events (actual commits)
-        const pushEvents = events.filter(e => e.type === 'PushEvent');
-
-        if (!pushEvents.length) {
-            commitMsg.textContent  = 'no recent commits';
-            commitMeta.textContent = 'github.com/NkosinathiMkhonza';
+        if (!allCommits.length) {
+            commitMsg.textContent  = 'no commits found';
+            commitMeta.textContent = 'check github.com';
             return;
         }
 
-        // Latest commit across all repos
-        const latest      = pushEvents[0];
-        const latestCommit= latest.payload.commits[latest.payload.commits.length - 1];
-        const latestMsg   = latestCommit.message.split('\n')[0];
-        const latestRepo  = latest.repo.name.replace('NkosinathiMkhonza/', '');
-        const latestDate  = timeAgo(new Date(latest.created_at));
+        // Sort by date, newest first
+        allCommits.sort((a, b) => b.date - a.date);
 
-        commitMsg.textContent = latestMsg;
-        commitMeta.innerHTML  = `${latestRepo} &bull; ${latestDate}`;
+        // Latest commit
+        const latest = allCommits[0];
+        commitMsg.textContent = latest.msg;
+        commitMeta.innerHTML  = `${latest.repo} &bull; ${timeAgo(latest.date)}`;
 
-        // Next 3 push events
-        commitList.innerHTML = pushEvents.slice(1, 4).map(e => {
-            const commit = e.payload.commits[e.payload.commits.length - 1];
-            const msg    = commit.message.split('\n')[0];
-            const repo   = e.repo.name.replace('NkosinathiMkhonza/', '');
-            const when   = timeAgo(new Date(e.created_at));
-            return `
+        // Next 3
+        commitList.innerHTML = allCommits.slice(1, 4).map(c => `
             <div class="rp-item rp-commit-extra">
                 <span class="rp-dot rp-dot-dim"></span>
                 <div>
-                    <div class="rp-value rp-commit-msg-small">${escapeHtml(msg)}</div>
-                    <div class="rp-meta">${repo} &bull; ${when}</div>
+                    <div class="rp-value rp-commit-msg-small">${escapeHtml(c.msg)}</div>
+                    <div class="rp-meta">${c.repo} &bull; ${timeAgo(c.date)}</div>
                 </div>
-            </div>`;
-        }).join('');
+            </div>
+        `).join('');
 
     } catch (err) {
-        if (commitMsg) commitMsg.textContent  = 'could not load activity';
+        if (commitMsg) commitMsg.textContent  = 'could not load commits';
         if (commitMeta) commitMeta.textContent = 'check github.com';
     }
-}
-
-function timeAgo(date) {
-    const s = Math.floor((new Date() - date) / 1000);
-    if (s < 60)    return 'just now';
+}   
     if (s < 3600)  return Math.floor(s / 60) + 'm ago';
     if (s < 86400) return Math.floor(s / 3600) + 'h ago';
     return Math.floor(s / 86400) + 'd ago';
