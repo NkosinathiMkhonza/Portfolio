@@ -239,7 +239,7 @@ async function loadGithubCommits() {
             return;
         }
 
-        // Sort by date, newest first
+        // Sort by date newest first
         allCommits.sort((a, b) => b.date - a.date);
 
         // Latest commit
@@ -262,7 +262,11 @@ async function loadGithubCommits() {
         if (commitMsg) commitMsg.textContent  = 'could not load commits';
         if (commitMeta) commitMeta.textContent = 'check github.com';
     }
-}   
+}
+
+function timeAgo(date) {
+    const s = Math.floor((new Date() - date) / 1000);
+    if (s < 60)    return 'just now';
     if (s < 3600)  return Math.floor(s / 60) + 'm ago';
     if (s < 86400) return Math.floor(s / 3600) + 'h ago';
     return Math.floor(s / 86400) + 'd ago';
@@ -272,6 +276,4 @@ function escapeHtml(str) {
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-loadGithubCommits();
-
-}); // end DOMContentLoaded
+loadGithubCommits();})
