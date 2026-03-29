@@ -120,41 +120,57 @@
                     </table>
                 </section>
 
-                <section id="projects">
-                    <h2>Projects</h2>
-                    <p>A list of pinned repositories. Each project solves a specific problem.</p>
-                    <div class="project-item">
-                        <h3>django-rest-api</h3>
-                        <p>A robust RESTful API featuring authentication, CRUD operations, and PostgreSQL integration.</p>
-                        <div class="badges-container">
-                            <span class="badge">Python</span>
-                            <span class="badge">Django</span>
-                            <span class="badge">PostgreSQL</span>
-                        </div>
-                        <div class="code-block">
-                            <pre><code># Endpoints Available
-GET    /api/v1/projects/
-POST   /api/v1/projects/
-GET    /api/v1/projects/{id}/</code></pre>
-                        </div>
+<!-- SECTION 4: PROJECTS -->
+<section id="projects">
+    <h2>Projects</h2>
+    <p>A list of pinned repositories. Each project solves a specific problem.</p>
+
+    <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card-grid">
+            <div class="project-inner">
+                <div class="project-header">
+                    <h3><a href="https://github.com/NkosinathiMkhonza/django-rest-api" target="_blank">django-rest-api</a></h3>
+                    <div class="badges-container">
+                        <span class="badge">Python</span>
+                        <span class="badge">Django</span>
+                        <span class="badge">PostgreSQL</span>
+                        <span class="badge">REST Framework</span>
                     </div>
-                    <hr class="divider">
-                    <div class="project-item">
-<h3>
-    <a href="https://github.com/NkosinathiMkhonza/task-manager-cli" target="_blank">task-manager-cli</a>
-</h3>
-<p>A command-line task manager built with Python and SQLite — with a Flask REST API and terminal-style web interface.</p>
-<div class="badges-container">
-    <span class="badge">Python</span>
-    <span class="badge">SQLite</span>
-    <span class="badge">Flask</span>
-    <span class="badge">REST API</span>
-</div>
-<a href="https://task-manager-cli-26pi.onrender.com" target="_blank" class="btn-primary" style="margin-bottom:16px; display:inline-flex;">
-    ▶ Live Demo
-</a>
+                </div>
+                <p>A REST API built with Django REST Framework featuring CRUD operations, model serialization, and PostgreSQL integration.</p>
+                <img src="django-api-preview.png" alt="Django REST API preview" class="project-preview">
+                <div class="project-footer">
+                    <a href="https://django-rest-api-y3z8.onrender.com" target="_blank" class="btn-primary project-btn">▶ Live Demo</a>
+                    <a href="https://github.com/NkosinathiMkhonza/django-rest-api" target="_blank" class="btn-outline project-btn">GitHub →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card-grid">
+            <div class="project-inner">
+                <div class="project-header">
+                    <h3><a href="https://github.com/NkosinathiMkhonza/task-manager-cli" target="_blank">task-manager-cli</a></h3>
+                    <div class="badges-container">
+                        <span class="badge">Python</span>
+                        <span class="badge">SQLite</span>
+                        <span class="badge">Flask</span>
+                        <span class="badge">REST API</span>
                     </div>
-                </section>
+                </div>
+                <p>A command-line task manager built with Python and SQLite — extended with a Flask REST API and terminal-style web interface.</p>
+                <img src="task-manager-preview.png" alt="Task Manager CLI preview" class="project-preview">
+                <div class="project-footer">
+                    <a href="https://task-manager-cli-26pi.onrender.com" target="_blank" class="btn-primary project-btn">▶ Live Demo</a>
+                    <a href="https://github.com/NkosinathiMkhonza/task-manager-cli" target="_blank" class="btn-outline project-btn">GitHub →</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 
                 <section id="credentials">
                     <h2>Credentials</h2>
