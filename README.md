@@ -31,10 +31,16 @@ This portfolio is designed to look and feel like a developer documentation site 
 | Structure | HTML5 |
 | Styling | CSS3, Bootstrap 5 |
 | Logic | Vanilla JavaScript (ES6+) |
-| Form Backend | Formspree |
+| Form Backend | Formspree | 
 | Data | GitHub REST API v3 |
 | Hosting | GitHub Pages |
 
+---
+
+## Backend Experience
+
+---
+In addition to this project, I have built backend systems using Django and Flask, including REST APIs with CRUD functionality, authentication, and database integration.
 ---
 
 ## Project Structure
@@ -74,6 +80,18 @@ The contact form uses [Formspree](https://formspree.io) to deliver submissions t
 Every feature in this project was committed as a focused, single-purpose change. The git history is intentionally readable — each commit message describes exactly what changed and why.
 
 ---
+
+## Challenges & Learnings
+
+~~~
+
+- Designing a terminal-style UI without breaking accessibility
+- Managing async API calls for real-time GitHub data
+- Structuring a large single-page layout without frameworks
+
+This project strengthened my understanding of DOM manipulation, asynchronous JavaScript, and UI state management.
+
+~~~
 
 ## Author
 
