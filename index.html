@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 
     <link rel="stylesheet" href="style.css">
+
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -123,16 +125,22 @@ $ print(f"Focus: {user.focus}")</code></pre>
 
 <!-- SECTION 4: PROJECTS -->
 <section id="projects">
-    <h2>Projects</h2>
-    <p>A list of pinned repositories. Each project solves a specific problem.</p>
+    <h2 data-aos="fade-up">Projects</h2>
+    <p data-aos="fade-up" data-aos-delay="100">
+        A list of pinned repositories. Each project solves a specific problem.
+    </p>
 
     <div class="projects-grid">
 
         <!-- Project 1 -->
-        <div class="project-card-grid">
+        <div class="project-card-grid" data-aos="zoom-in" data-aos-delay="200">
             <div class="project-inner">
                 <div class="project-header">
-                    <h3><a href="https://github.com/NkosinathiMkhonza/django-rest-api" target="_blank">django-rest-api</a></h3>
+                    <h3>
+                        <a href="https://github.com/NkosinathiMkhonza/django-rest-api" target="_blank">
+                            django-rest-api
+                        </a>
+                    </h3>
                     <div class="badges-container">
                         <span class="badge">Python</span>
                         <span class="badge">Django</span>
@@ -140,7 +148,13 @@ $ print(f"Focus: {user.focus}")</code></pre>
                         <span class="badge">REST Framework</span>
                     </div>
                 </div>
-                <p>A REST API built with Django REST Framework featuring CRUD operations, model serialization, and PostgreSQL integration.</p>
+                <p>
+Built to simulate a production-ready backend system, this REST API solves the challenge of managing structured data efficiently in modern web applications. 
+
+It provides scalable CRUD operations, secure data handling, and seamless PostgreSQL integration — demonstrating how backend services can power real-world platforms such as booking systems, dashboards, or mobile apps.
+
+This project highlights my ability to design clean API architectures, handle data persistence, and build systems that are easy to extend and integrate.
+</p>
                 <img src="django-api-preview.png" alt="Django REST API preview" class="project-preview">
                 <div class="project-footer">
                     <a href="https://django-rest-api-y3z8.onrender.com" target="_blank" class="btn-primary project-btn">▶ Live Demo</a>
@@ -150,10 +164,14 @@ $ print(f"Focus: {user.focus}")</code></pre>
         </div>
 
         <!-- Project 2 -->
-        <div class="project-card-grid">
+        <div class="project-card-grid" data-aos="zoom-in" data-aos-delay="100">
             <div class="project-inner">
                 <div class="project-header">
-                    <h3><a href="https://github.com/NkosinathiMkhonza/task-manager-cli" target="_blank">task-manager-cli</a></h3>
+                    <h3>
+                        <a href="https://github.com/NkosinathiMkhonza/task-manager-cli" target="_blank">
+                            task-manager-cli
+                        </a>
+                    </h3>
                     <div class="badges-container">
                         <span class="badge">Python</span>
                         <span class="badge">SQLite</span>
@@ -161,7 +179,13 @@ $ print(f"Focus: {user.focus}")</code></pre>
                         <span class="badge">REST API</span>
                     </div>
                 </div>
-                <p>A command-line task manager built with Python and SQLite — extended with a Flask REST API and terminal-style web interface.</p>
+                <p>
+Created to explore productivity tooling and backend integration, this project solves the problem of managing tasks efficiently through both a command-line interface and a web-based API.
+
+It combines a lightweight SQLite database with a Flask REST API, showing how traditional CLI tools can evolve into full-stack applications with real-world usability.
+
+This demonstrates my ability to bridge system-level tools with web technologies, design flexible architectures, and build applications that adapt to different user environments.
+</p>
                 <img src="task-manager-preview.png" alt="Task Manager CLI preview" class="project-preview">
                 <div class="project-footer">
                     <a href="https://task-manager-cli-26pi.onrender.com" target="_blank" class="btn-primary project-btn">▶ Live Demo</a>
@@ -172,7 +196,6 @@ $ print(f"Focus: {user.focus}")</code></pre>
 
     </div>
 </section>
-
                 <section id="credentials">
                     <h2>Credentials</h2>
                     <div class="credential-card">
@@ -330,5 +353,14 @@ $ print(f"Focus: {user.focus}")</code></pre>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
     <script src="script.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script> 
+
 </body>
 </html>
