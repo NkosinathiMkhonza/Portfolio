@@ -276,4 +276,65 @@ function escapeHtml(str) {
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-loadGithubCommits();})
+loadGithubCommits();
+
+// ==========================================
+// HAMBURGER DRAWER
+// ==========================================
+function toggleDrawer() {
+    const drawer  = document.getElementById('mobileDrawer');
+    const overlay = document.getElementById('drawerOverlay');
+    const btn     = document.getElementById('hamburgerBtn');
+    drawer.classList.toggle('active');
+    overlay.classList.toggle('active');
+    btn.classList.toggle('active');
+    document.body.style.overflow = drawer.classList.contains('active') ? 'hidden' : '';
+}
+
+// ==========================================
+// NEWS TICKER — GitHub commits
+// ==========================================
+async function loadTicker() {
+    const ticker = document.getElementById('tickerContent');
+    if (!ticker) return;
+
+    const repos = ['Portfolio', 'task-manager-cli', 'django-rest-api', 'grind-tracker'];
+    const allCommits = [];
+
+    for (const repo of repos) {
+        try {
+            const res = await fetch(
+                `https://api.github.com/repos/NkosinathiMkhonza/${repo}/commits?per_page=3`,
+                { headers: { 'Accept': 'application/vnd.github.v3+json' } }
+            );
+            if (!res.ok) continue;
+            const commits = await res.json();
+            commits.forEach(c => {
+                allCommits.push({
+                    msg:  c.commit.message.split('\n')[0],
+                    repo: repo,
+                    date: new Date(c.commit.author.date)
+                });
+            });
+        } catch(e) { continue; }
+    }
+
+    if (!allCommits.length) return;
+    allCommits.sort((a, b) => b.date - a.date);
+
+    // Build ticker items — duplicate for seamless loop
+    const items = allCommits.slice(0, 8).map(c =>
+        `<span class="ticker-item">
+            <span class="ticker-repo">[${escapeHtml(c.repo)}]</span>
+            ${escapeHtml(c.msg)}
+            <span style="color:var(--border)">·····</span>
+        </span>`
+    ).join('');
+
+    ticker.innerHTML = items + items; // duplicate for seamless scroll
+}
+
+loadTicker();
+
+})
+

@@ -796,3 +796,193 @@ pre, code, .terminal, .code-block {
 .hljs-variable { color: #ffa657; opacity: 0.8; } /* dimmer orange for variables */
 .hljs-attr { color: #7ee787; opacity: 0.8; } /* softer green for attributes */
 
+/* ==========================================
+   HAMBURGER BUTTON
+   ========================================== */
+.hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--fg);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-btn.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ==========================================
+   MOBILE DRAWER
+   ========================================== */
+.drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+}
+
+.drawer-overlay.active { display: block; }
+
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border);
+    z-index: 300;
+    transition: left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.mobile-drawer.active { left: 0; }
+
+.drawer-header {
+    padding: 32px 24px 24px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+.drawer-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    margin-bottom: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.drawer-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--fg);
+    margin-bottom: 4px;
+}
+
+.drawer-handle {
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+.drawer-badge {
+    font-family: var(--font-code);
+    font-size: 0.68rem;
+    color: var(--success);
+    border: 1px solid rgba(63,185,80,0.3);
+    background: rgba(63,185,80,0.1);
+    border-radius: 20px;
+    padding: 3px 10px;
+}
+
+.drawer-nav {
+    padding: 20px 24px;
+    flex: 1;
+}
+
+.drawer-section-title {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 16px 0 8px;
+}
+
+.drawer-link {
+    display: block;
+    padding: 8px 12px;
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    transition: all 0.18s;
+    margin-bottom: 2px;
+}
+
+.drawer-link:hover {
+    background: var(--accent-dim);
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.drawer-footer {
+    padding: 16px 24px 24px;
+    border-top: 1px solid var(--border);
+}
+
+/* ==========================================
+   NEWS TICKER
+   ========================================== */
+.news-ticker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.ticker-label {
+    font-family: var(--font-code);
+    font-size: 0.68rem;
+    color: var(--success);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.ticker-wrapper {
+    flex: 1;
+    overflow: hidden;
+}
+
+.ticker-content {
+    display: flex;
+    gap: 48px;
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+}
+
+.ticker-content:hover { animation-play-state: paused; }
+
+@keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.ticker-item {
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+    color: var(--muted);
+    flex-shrink: 0;
+}
+
+.ticker-item span { color: var(--accent); }
+.ticker-item .ticker-repo { color: var(--success); }
