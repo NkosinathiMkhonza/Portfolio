@@ -1,3 +1,18 @@
+// ==========================================
+// HAMBURGER DRAWER — must be outside DOMContentLoaded
+// so onclick="toggleDrawer()" in HTML can reach it
+// ==========================================
+function toggleDrawer() {
+    const drawer  = document.getElementById('mobileDrawer');
+    const overlay = document.getElementById('drawerOverlay');
+    const btn     = document.getElementById('hamburgerBtn');
+    if (!drawer) return;
+    drawer.classList.toggle('active');
+    overlay.classList.toggle('active');
+    btn.classList.toggle('active');
+    document.body.style.overflow = drawer.classList.contains('active') ? 'hidden' : '';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
 // ==========================================

@@ -24,14 +24,42 @@
 <body>
 
     <!-- MOBILE HEADER: Only visible on small screens -->
-   <header class="mobile-header d-lg-none">
+  <header class="mobile-header d-lg-none">
     <div class="mobile-logo">&lt;/&gt; docs.me</div>
     <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleDrawer()">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </button>
 </header>
+
+<!-- Overlay -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+        <img src="https://avatars.githubusercontent.com/NkosinathiMkhonza"
+            alt="Nkosinathi Mkhonza" class="drawer-avatar">
+        <div class="drawer-name">Nkosinathi Mkhonza</div>
+        <div class="drawer-handle">@NkosinathiMkhonza</div>
+        <span class="drawer-badge">&#9679; Open to Work</span>
+    </div>
+    <div class="drawer-nav">
+        <div class="drawer-section-title">Getting Started</div>
+        <a href="#intro"       class="drawer-link" onclick="toggleDrawer()">Introduction</a>
+        <a href="#philosophy"  class="drawer-link" onclick="toggleDrawer()">Philosophy</a>
+        <div class="drawer-section-title">Core Modules</div>
+        <a href="#skills"      class="drawer-link" onclick="toggleDrawer()">Tech Stack</a>
+        <a href="#projects"    class="drawer-link" onclick="toggleDrawer()">Projects</a>
+        <a href="#credentials" class="drawer-link" onclick="toggleDrawer()">Credentials</a>
+        <div class="drawer-section-title">Interface</div>
+        <a href="#contact"     class="drawer-link" onclick="toggleDrawer()">Contact</a>
+    </div>
+    <div class="drawer-footer">
+        <a href="https://github.com/NkosinathiMkhonza" target="_blank" class="drawer-link">
+            View Source on GitHub &#8594;
+        </a>
+    </div>
+</div>
 
 <!-- Mobile drawer overlay -->
 <div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
