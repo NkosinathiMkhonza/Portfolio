@@ -890,6 +890,14 @@ pre, code, .terminal, .code-block {
     margin-bottom: 10px;
 }
 
+.drawer-about {
+    font-size: 0.82rem;
+    color: var(--fg);
+    line-height: 1.5;
+    margin-top: 8px;
+    opacity: 0.85;
+}
+
 .drawer-badge {
     font-family: var(--font-code);
     font-size: 0.68rem;
