@@ -728,11 +728,11 @@ footer p { font-size: 0.85rem; color: var(--muted); }
 
 .project-preview {
     width: 100%;
+    height: 180px;
+    object-fit: cover;
     border-radius: 6px;
     border: 1px solid var(--border);
     display: block;
-    object-fit: cover;
-    height: 180px;
 }
 
 .project-footer {
